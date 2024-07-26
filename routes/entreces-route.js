@@ -9,12 +9,13 @@ const {
 
 const router = express.Router();
 
-router.get("/", getAllUsers);
+router.get("/api/user", getAllUsers);
 
-router.get("/:id", getUser);
+router.get("/api/user/:id", getUser);
 
-router.post("/", loginUser);
+router.post("/api/auth/login", loginUser);
 
 router.post("/api/auth/signup", createUser);
 
 module.exports = router;
+          
