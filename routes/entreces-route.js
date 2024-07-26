@@ -15,6 +15,6 @@ router.get("/:id", getUser);
 
 router.post("/", loginUser);
 
-router.post("/", createUser);
+router.post("/api/auth/signup", createUser);
 
 module.exports = router;
