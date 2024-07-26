@@ -9,7 +9,7 @@ const {
 
 const router = express.Router();
 
-router.get("/api/user", getAllUsers);
+router.get("/api/users", getAllUsers);
 
 router.get("/api/user/:id", getUser);
 

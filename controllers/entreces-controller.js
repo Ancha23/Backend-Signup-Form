@@ -17,12 +17,12 @@ const getUser = async (req, res) => {
         const users = await User.find({ name: { $regex: new RegExp(nome, "i") } });
   
         if (users.length === 0) {
-          return res.status(404).json({ message: 'Nenhum usuário encontrado com esse nome.' });
+          return res.status(404).json({ message: 'Nenhum utilizador encontrado com esse nome.' });
         }
   
 
         res.status(200).json({
-          message: 'Usuário encontrado com sucesso!',
+          message: 'Utilizador encontrado com sucesso!',
           users: users.map(user => ({
             id: user._id,
             name: user.name,
@@ -32,13 +32,13 @@ const getUser = async (req, res) => {
     } else if (email) {
       const user = await User.findOne({ email });
       if (!user) {
-        return res.status(404).json({ message: 'Utilizador  não encontrado' });
+        return res.status(404).json({ message: 'Nenhum utilizador encontrado com esse email.' });
       }
       res.status(200).json(user);
     } else {
       const user = await User.findById(id);
       if (!user) {
-        return res.status(404).json({ message: 'Utilizador não encontrado' });
+        return res.status(404).json({ message: 'Nenhum utilizador encontrado com esse id.' });
       }
       res.status(200).json(user);
     }
@@ -65,7 +65,7 @@ const createUser = async (req, res) => {
         await newUser.save();
 
         res.status(201).json({
-            message: 'Usuário criado com sucesso!',
+            message: 'Utilizador criado com sucesso!',
             user: {
                 id: newUser._id, 
                 name: newUser.name,
@@ -74,7 +74,7 @@ const createUser = async (req, res) => {
         });
     } catch (error) {
       
-        res.status(500).json({ error: 'Erro ao criar o usuário: ' + error.message });
+        res.status(500).json({ error: 'Este usuario ja existe '});
     }
 };
   const loginUser = async (req, res) => {
